@@ -4,7 +4,7 @@ Use this fork to build a WooCommerce store with the Northline Storefront child t
 
 ## What you need
 
-- Git, LocalWP and WordPress admin access to a fresh local site. Record the PHP version shown in LocalWP.
+- Git, LocalWP and WordPress admin access to a fresh local site. Select PHP 8.2.29 in LocalWP to match Northline.
 - A Stripe sandbox for the project, a webhook URL reachable by Stripe, and access to a GA4 test property.
 - Client settings for currency, timezone, shipping zones and rates, and taxes.
 - Use the Northline versions below as a reference when selecting compatible versions for the new store.
@@ -12,6 +12,7 @@ Use this fork to build a WooCommerce store with the Northline Storefront child t
 | Component | Northline version |
 | --- | --- |
 | WordPress | 7.1.5 |
+| PHP | 8.2.29 |
 | Storefront / Storefront Child | 4.6.2 / 1.0.0 |
 | WooCommerce | 11.3.1 |
 | WooCommerce Stripe Gateway | 11.2.0 |
@@ -45,5 +46,6 @@ Use this fork to build a WooCommerce store with the Northline Storefront child t
 ## Handoff status
 
 - The tester confirmed that a private LocalWP export restored the Shop, images and active theme. They also checked the four store pages in both browsers at all three sizes.
-- Still open before tagging a release: confirm PHP, run the syntax check, install from a fresh fork and verify product-name announcements in Narrator.
+- PHP 8.2.29 reported no syntax errors in storefront-child/functions.php.
+- Before tagging a release, install from a fresh fork and verify product-name announcements in Narrator.
 - Hosted deployment, scheduled backups and rollback still need validation.
