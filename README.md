@@ -27,14 +27,6 @@ Use this fork to build a WooCommerce store with the Northline Storefront child t
 4. Enable Stripe test mode, connect the project's sandbox and configure its webhook. A LocalWP export can carry over the original store's Stripe settings. Check the connected account if you restore an export.
 5. Configure the GA4 test property. Add unique titles and descriptions for Shop and product pages, and descriptive alt text for informative images.
 
-## Acceptance checks
-
-- [ ] Run `php -l storefront-child/functions.php` from the repo root with the site's PHP version. Confirm it reports no syntax errors.
-- [ ] Open Shop, a product, Cart and Checkout in Edge and Brave at 1366×768, 768×1024 and 390×844. Confirm controls remain visible, usable and free of overlap.
-- [ ] Navigate with the keyboard and Narrator. Verify visible focus, a usable skip link, and a single product-name announcement per product link. Check that closed search and cart controls stay out of the focus order.
-- [ ] Save Lighthouse accessibility and SEO results for Shop and one product. Record remaining findings.
-- [ ] In Stripe test mode, complete a purchase, decline a payment, retry the failed order and cancel authentication. Record each WooCommerce status and Stripe result. Verify successful webhook delivery.
-- [ ] As a signed-out shopper, trigger product view, add-to-cart, checkout and purchase events. Confirm the GA4 purchase ID, value and currency match the WooCommerce order.
 
 ## Local → Staging → Production
 
