@@ -1,0 +1,56 @@
+/*
+ Theme Name: Storefront Child
+Template: storefront
+Version: 1.0.0
+*/
+
+/* Keep original sale prices readable. */
+.woocommerce ul.products li.product .price del {
+    opacity: 1;
+    color: #595959;
+}
+
+/* Give mobile footer controls and product search larger touch areas. */
+.storefront-handheld-footer-bar ul li > a {
+    min-width: 48px;
+    min-height: 48px;
+}
+
+.widget_product_search .search-field {
+    min-height: 48px;
+}
+
+@media (max-width: 768px) {
+    .storefront-handheld-footer-bar .site-search {
+        padding: 12px;
+    }
+}
+
+/* Hide the mobile search panel until it is opened. */
+.storefront-handheld-footer-bar ul li.search .site-search {
+    visibility: hidden;
+}
+
+.storefront-handheld-footer-bar ul li.search.active .site-search {
+    visibility: visible;
+}
+
+/* Hide the closed mini-cart from screen readers.
+   Reveal it for mouse and keyboard users. */
+@media (min-width: 768px) {
+    .site-header-cart .widget_shopping_cart {
+        visibility: hidden;
+    }
+
+    .site-header-cart:hover .widget_shopping_cart,
+    .site-header-cart:focus-within .widget_shopping_cart,
+    .site-header-cart.focus .widget_shopping_cart {
+        visibility: visible;
+    }
+}
+
+/* Keep original sale prices readable on product pages. */
+.single-product div.product .summary .price del {
+    opacity: 1;
+    color: #595959;
+}
