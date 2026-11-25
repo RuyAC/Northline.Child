@@ -36,10 +36,3 @@ Use this fork to build a WooCommerce store with the Northline Storefront child t
 ## Backup and rollback
 
 - Agree on backup frequency, keep encrypted copies in restricted storage and test a restore. For a code rollback, deploy the previous version and retest checkout. For database recovery, preserve recent orders and reconcile them with Stripe.
-
-## Handoff status
-
-- The tester confirmed that a private LocalWP export restored the Shop, images and active theme. They also checked the four store pages in both browsers at all three sizes.
-- PHP 8.2.29 reported no syntax errors in storefront-child/functions.php.
-- Before tagging a release, install from a fresh fork and verify product-name announcements in Narrator.
-- Hosted deployment, scheduled backups and rollback still need validation.
