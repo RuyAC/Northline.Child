@@ -36,12 +36,14 @@ Use this fork to build a WooCommerce store with the Northline Storefront child t
 - [ ] In Stripe test mode, complete a purchase, decline a payment, retry the failed order and cancel authentication. Record each WooCommerce status and Stripe result. Verify successful webhook delivery.
 - [ ] As a signed-out shopper, trigger product view, add-to-cart, checkout and purchase events. Confirm the GA4 purchase ID, value and currency match the WooCommerce order.
 
-## Release and recovery
+## Local → Staging → Production
 
-- **Git.** Review staged files. Publish only custom code and guides. Keep exports, databases, uploads, logs, credentials and preview links private.
-- **Staging.** Back up the site, restrict access, disable indexing and sanitize copied data. Use sandbox payments and captured email. Run the acceptance checks on the release you plan to deploy.
-- **Production.** After approval, back up files and database. Deploy the tested code while preserving live orders. Verify HTTPS, live payments, webhooks, email and Analytics. Enable indexing at launch.
-- **Recovery.** Agree on backup frequency, keep encrypted copies in restricted storage and test a restore. For a code rollback, deploy the previous version and retest checkout. For database recovery, preserve recent orders and reconcile them with Stripe.
+1. **Local.** Develop in the child theme on PHP 8.2.29. Run the acceptance checks with test accounts. Review staged files and commit the tested changes. Publish only custom code and guides. Keep exports, databases, uploads, logs, credentials and preview links private.
+2. **Staging.** Back up staging and deploy the local commit. Restrict access, disable indexing and sanitize copied data. Use sandbox payments and captured email. Run the acceptance checks on the release you plan to deploy.
+3. **Production.** After staging approval, record the current production commit and back up files and database. Deploy the exact commit approved on staging. Keep the live order database in place. Verify HTTPS, live payments, webhooks, email and Analytics. Enable indexing at launch.
+## Backup and rollback
+
+- Agree on backup frequency, keep encrypted copies in restricted storage and test a restore. For a code rollback, deploy the previous version and retest checkout. For database recovery, preserve recent orders and reconcile them with Stripe.
 
 ## Handoff status
 
