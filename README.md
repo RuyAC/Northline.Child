@@ -1,38 +1,49 @@
 # Northline WooCommerce starter
 
-A Storefront child theme with fixes for sale-price contrast, mobile search, cart visibility and product thumbnail labels.
+Use this fork to build a WooCommerce store with the Northline Storefront child theme. The theme provides sale-price contrast, mobile search and mini-cart visibility rules, and product thumbnail labels.
 
-## Start a store
+## What you need
 
-1. Fork and clone this repository. Create a fresh WordPress site in LocalWP.
-2. Install Storefront and the plugins listed below. Copy `storefront-child/` into `wp-content/themes/` and activate **Storefront Child**.
-3. Set the store currency, timezone, shipping and taxes. Assign the WooCommerce pages and select the same menu for Primary and Handheld.
-4. Import sample products for testing. Add product descriptions and image alt text.
-5. Connect your own Stripe sandbox and test webhook. Connect a separate GA4 test property. A private LocalWP export includes database settings and can carry over the original Stripe connection.
+- Git, LocalWP and WordPress admin access to a fresh local site. Record the PHP version shown in LocalWP.
+- A Stripe sandbox for the project, a webhook URL reachable by Stripe, and access to a GA4 test property.
+- Client settings for currency, timezone, shipping zones and rates, and taxes.
+- Use the Northline versions below as a reference when selecting compatible versions for the new store.
 
-## Northline versions
+| Component | Northline version |
+| --- | --- |
+| WordPress | 7.1.5 |
+| Storefront / Storefront Child | 4.6.2 / 1.0.0 |
+| WooCommerce | 11.3.1 |
+| WooCommerce Stripe Gateway | 11.2.0 |
+| Yoast SEO | 28.9 |
+| Google Analytics for WooCommerce | 2.4.5 |
 
-- WordPress 7.1.5, Storefront 4.6.2 and Storefront Child 1.0.0.
-- WooCommerce 11.3.1 and WooCommerce Stripe Gateway 11.2.0.
-- Yoast SEO 28.9 and Google Analytics for WooCommerce 2.4.5.
+## Set up the store
 
-## Test a change
+1. Fork and clone the repo. Create a fresh site in LocalWP. Install Storefront and the four plugins listed above.
+2. Copy `storefront-child/` into `wp-content/themes/`. Activate **Storefront Child** and keep its parent installed. Make theme changes in the child theme.
+3. Apply the client settings. Assign Shop, Cart, Checkout and My Account. Assign the same menu to Primary and Handheld. Import WooCommerce sample products for local testing.
+4. Enable Stripe test mode, connect the project's sandbox and configure its webhook. A LocalWP export can carry over the original store's Stripe settings. Check the connected account if you restore an export.
+5. Configure the GA4 test property. Add unique titles and descriptions for Shop and product pages, and descriptive alt text for informative images.
 
-- Edit the child theme on a branch. Run `php -l storefront-child/functions.php` with the site's PHP version.
-- Check Shop, product, Cart and Checkout in two browsers at laptop, tablet and mobile sizes. Check keyboard focus, Narrator labels and Lighthouse accessibility and SEO results.
-- Test a successful payment, a decline, a retry and canceled authentication. Verify order status and webhook delivery.
-- Verify GA4 product views, add-to-cart, checkout and purchase events. Match the purchase ID, value and currency to the order.
-- Review staged files before pushing. Publish only custom code and guides. Keep exports, databases, uploads, logs, credentials and preview links private.
+## Acceptance checks
 
-## Deploy and recover
+- [ ] Run `php -l storefront-child/functions.php` from the repo root with the site's PHP version. Confirm it reports no syntax errors.
+- [ ] Open Shop, a product, Cart and Checkout in Edge and Brave at 1366×768, 768×1024 and 390×844. Confirm controls remain visible, usable and free of overlap.
+- [ ] Navigate with the keyboard and Narrator. Verify visible focus, a usable skip link, and a single product-name announcement per product link. Check that closed search and cart controls stay out of the focus order.
+- [ ] Save Lighthouse accessibility and SEO results for Shop and one product. Record remaining findings.
+- [ ] In Stripe test mode, complete a purchase, decline a payment, retry the failed order and cancel authentication. Record each WooCommerce status and Stripe result. Verify successful webhook delivery.
+- [ ] As a signed-out shopper, trigger product view, add-to-cart, checkout and purchase events. Confirm the GA4 purchase ID, value and currency match the WooCommerce order.
 
-- **Staging.** Back up the site and deploy the reviewed code. Restrict access, disable indexing, sanitize copied data and use sandbox payments and captured email. Repeat the checks above for each client.
-- **Production.** After approval, back up files and database. Deploy the tested code and preserve live orders. Verify HTTPS, live gateway settings, webhooks, email and Analytics. Enable indexing at launch.
-- **Backups.** Keep encrypted copies in restricted storage. Set the frequency based on how many orders the client can afford to lose. Test a restore before launch.
-- **Rollback.** Redeploy the previous version and retest checkout. If database recovery is needed, preserve new orders and reconcile them against gateway transactions.
+## Release and recovery
 
-## Validation
+- **Git.** Review staged files. Publish only custom code and guides. Keep exports, databases, uploads, logs, credentials and preview links private.
+- **Staging.** Back up the site, restrict access, disable indexing and sanitize copied data. Use sandbox payments and captured email. Run the acceptance checks on the release you plan to deploy.
+- **Production.** After approval, back up files and database. Deploy the tested code while preserving live orders. Verify HTTPS, live payments, webhooks, email and Analytics. Enable indexing at launch.
+- **Recovery.** Agree on backup frequency, keep encrypted copies in restricted storage and test a restore. For a code rollback, deploy the previous version and retest checkout. For database recovery, preserve recent orders and reconcile them with Stripe.
 
-- The tester confirmed the private LocalWP export restored the Shop, images and active theme. They also checked Shop, Beanie, Cart and Checkout in Edge and Brave at all three screen sizes.
-- Before tagging a release, confirm the PHP version, run the syntax check, test a fresh install from the fork and recheck product-name repetition in Narrator.
+## Handoff status
+
+- The tester confirmed that a private LocalWP export restored the Shop, images and active theme. They also checked the four store pages in both browsers at all three sizes.
+- Still open before tagging a release: confirm PHP, run the syntax check, install from a fresh fork and verify product-name announcements in Narrator.
 - Hosted deployment, scheduled backups and rollback still need validation.
